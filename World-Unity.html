@@ -30,9 +30,18 @@
    		var highScore = 0;
         
         // SI: Jul 13, 2018
+        
+        var ballColor = "#ff7700";
         var problem_rows = 5;
-        var problem_cols = 14;   
-
+        var problem_cols = 14;
+        
+        var services = [];
+        var serviceColor = "Green";
+        var serviceLine = 600; // y position for the services
+        var service_rows = 5;
+        var service_cols = 14; 
+        
+        
 		function init()
 		{
 			if(typeof(Storage) !== "undefined") {
@@ -49,7 +58,8 @@
 			createjs.Touch.enable(stage);
 			createPaddle();
 			createBall();
-			createBrickGrid(); 
+			createBrickGrid(); // Create Problems grid
+			createServiceGrid(); // Create Problems grid            
 			createScoreText();
 
 			stage.canvas.height = window.innerHeight;
@@ -319,13 +329,22 @@
 			}
 		}
 
-		// SI: Jul 13, 2018
+		// SI: Jul 13, 2018 -----------------------------------------------------
 		function createBrickGrid()
 		{
 			for(var i = 0;i<problem_cols;i++)
 				for(var j = 0;j<problem_rows;j++)
 				{
 					createBrick(i*(BRICKS_WIDTH+10)+40,j*(BRICKS_HEIGHT+5)+20);
+				}
+		}		
+        
+        function createServiceGrid()
+		{
+			for(var i = 0;i<service_cols;i++)
+				for(var j = 0;j<service_rows;j++)
+				{
+					createService(i*(BRICKS_WIDTH+10)+40,j*(BRICKS_HEIGHT+5)+ serviceLine);
 				}
 		}
 
@@ -345,6 +364,23 @@
 	        bricks.push(brick);
 	    }
 
+        function createService(x,y)
+		{
+			var service = new createjs.Shape();
+	        service.graphics.beginFill(serviceColor);
+	        service.graphics.drawRect(0, 0, BRICKS_WIDTH, BRICKS_HEIGHT);
+	        service.graphics.endFill();
+
+	        service.regX = BRICKS_WIDTH/2;
+	        service.regY = BRICKS_HEIGHT/2;
+	        service.x = x;
+	        service.y = y;
+	        service.setBounds(service.regX,service.regY,BRICKS_WIDTH,BRICKS_HEIGHT);
+	        stage.addChild(service);
+	        services.push(service);
+	    }
+
+        
 		function destroyBrick(brick)
 		{
 			createjs.Tween.get(brick,{}).to({scaleX:0,scaleY:0}, 500)
@@ -359,7 +395,7 @@
 		function createBall()
 		{
 			ball = new createjs.Shape();
-			ball.graphics.beginFill("Red").drawCircle(0,0, BALL_RADIUS);
+			ball.graphics.beginFill(ballColor).drawCircle(0,0, BALL_RADIUS);
 			ball.x = paddle.x;
 			ball.y = paddle.y - PADDLE_HEIGHT/2  - BALL_RADIUS;
 			stage.addChild(ball);

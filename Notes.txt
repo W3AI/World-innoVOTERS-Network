@@ -63,6 +63,14 @@ stage.addChild(text);
 TODO - to a compute sizes: Width and Height of bricks for Problems/Project and Operations/Tasks/Services based on the canvas size and rows and Cols for Problems & Operations
 and borders. <<<<< !!!!!
 
+-----
+The Breakout Game
+-----
+
+TODO - To implement later multiple balls - equivalent to multiple processors / commands possible in parallel!!!
+
+TODO - Add Cols and rows for Operations
+
 
 
 
