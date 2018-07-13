@@ -1,0 +1,69 @@
+
+July 13 
+==============
+
+Lynda HTML5 Advanced createjs
+
+var text = new createjs.Text("Problem", "14px  Arial", "#fff");
+           
+text.x = 5;
+text.y = 20;
+text.textBaseline = "alphabetic";
+
+stage.addChild(brick);
+stage.addChild(text);
+
+--------
+
+<html>
+<head>
+    <title>World Unity</title>
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+</head>
+<body onload="init();">
+  <canvas id="testCanvas" width="500" height="500"></canvas>
+  <script>
+  function init() {
+    var stage = new createjs.Stage("testCanvas");
+    var circle = new createjs.Shape();
+    circle.graphics.beginFill("Red").drawCircle(0, 0, 90);
+    circle.x = 250;
+    circle.y = 250;
+    stage.addChild(circle);
+	//    stage.update(); 
+      
+    createjs.Ticker.setFPS(60);
+	createjs.Ticker.addEventListener("tick", stage);
+
+	createjs.Tween.get(circle, {loop: true})
+        .to({alpha:0, x: 400}, 500, createjs.Ease.bounceIn)
+        .to({alpha:1, x: 250}, 500, createjs.Ease.bounceIn)
+    }
+	</script>
+</body>
+</html>
+
+------------
+
+        var problem_rows = 3;
+        var problem_cols = 10;
+
+....
+		/*NEW*/
+		function createBrickGrid()
+		{
+			for(var i = 0;i<problem_cols;i++)
+				for(var j = 0;j<problem_rows;j++)
+				{
+					createBrick(i*(BRICKS_WIDTH+10)+40,j*(BRICKS_HEIGHT+5)+20);
+				}
+		}
+
+
+TODO - to a compute sizes: Width and Height of bricks for Problems/Project and Operations/Tasks/Services based on the canvas size and rows and Cols for Problems & Operations
+and borders. <<<<< !!!!!
+
+
+
+
+
