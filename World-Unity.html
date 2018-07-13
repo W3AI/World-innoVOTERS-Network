@@ -1,13 +1,13 @@
 <html>
 <head>
-	<title>HTML5 Course</title>
+	<title>World Unity</title>
 	<script src="https://code.createjs.com/createjs-2015.05.21.min.js"></script>
 	
 </head>
 <body onload="init();">
 	<canvas id="testCanvas" width="1000" height="500"></canvas>
 	<script>
-
+        
 		const PADDLE_WIDTH = 100;
 		const PADDLE_HEIGHT = 20;
 		const BRICKS_WIDTH = 60;
@@ -28,6 +28,10 @@
    		var keyboardMoveLeft = false;
    		var keyboardMoveRight = false;
    		var highScore = 0;
+        
+        // SI: Jul 13, 2018
+        var problem_rows = 5;
+        var problem_cols = 14;   
 
 		function init()
 		{
@@ -315,11 +319,11 @@
 			}
 		}
 
-		
+		// SI: Jul 13, 2018
 		function createBrickGrid()
 		{
-			for(var i = 0;i<14;i++)
-				for(var j = 0;j<5;j++)
+			for(var i = 0;i<problem_cols;i++)
+				for(var j = 0;j<problem_rows;j++)
 				{
 					createBrick(i*(BRICKS_WIDTH+10)+40,j*(BRICKS_HEIGHT+5)+20);
 				}
