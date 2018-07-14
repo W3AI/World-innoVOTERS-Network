@@ -29,6 +29,8 @@
    		var keyboardMoveRight = false;
    		var highScore = 0;
         
+        var brickColor = '#000FFF';
+        
         // SI: Jul 13, 2018
         
         var ballColor = "#ff7700";
@@ -36,8 +38,8 @@
         var problem_cols = 14;
         
         var services = [];
-        var serviceColor = "Green";
-        var serviceLine = 600; // y position for the services
+        var serviceColor = "Green"; // ToDo - make it an array to hold diff colors / service type
+        var serviceLine = 500; // y position for the services
         var service_rows = 5;
         var service_cols = 14; 
         
@@ -82,6 +84,8 @@
    			window.onkeyup = keyUpHandler;
    			window.onkeydown = keyDownHandler;
 		}
+        
+        
 
 		function startLevel()
 		{
@@ -212,7 +216,6 @@
 			{
 				if(checkCollision(ball,bricks[i]))
 				{
-
 					addToScore(100);
 					console.log("Brick Hit / New Score: "+score);
 					destroyBrick(bricks[i]);
@@ -220,6 +223,21 @@
 					i--;
 				}
 			}
+            
+            // SI: Jul 13, 2018 adding the collision w service bricks
+			for(var i=0;i<bricks.length;i++)
+			{
+				if(checkCollision(ball,services[i]))
+				{
+                    // ToDo - to add some logic for services: available or not etc, cost
+					// addToScore(100);
+					// console.log("Brick Hit / New Score: "+score);
+					destroyBrick(services[i]);
+					services.splice(i,1);
+					i--;
+				}
+			}    // End Collision check with Service bricks
+            
 
 			if(checkCollision(ball,paddle))
 			{
@@ -351,7 +369,7 @@
 		function createBrick(x,y)
 		{
 			var brick = new createjs.Shape();
-	        brick.graphics.beginFill('#000FFF');
+	        brick.graphics.beginFill(brickColor);
 	        brick.graphics.drawRect(0, 0, BRICKS_WIDTH, BRICKS_HEIGHT);
 	        brick.graphics.endFill();
 
