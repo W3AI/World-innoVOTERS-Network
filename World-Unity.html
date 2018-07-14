@@ -8,7 +8,13 @@
 	<canvas id="testCanvas" width="1000" height="500"></canvas>
 	<script>
         
-		const PADDLE_WIDTH = 100;
+		const PADDING_TOP = 20;
+        const PADDING_BOTTOM = 20;
+        const PADDING_LEFT = 40;
+        const BETWEEN_COLS = 4;
+        const BETWEEN_ROWS = 4;
+        
+        const PADDLE_WIDTH = 100;
 		const PADDLE_HEIGHT = 20;
 		const BRICKS_WIDTH = 60;
 		const BRICKS_HEIGHT = 30;
@@ -260,9 +266,9 @@
 
 			//Check if we've reached the walls
 
-			if(ball.x+BALL_RADIUS>=stage.canvas.width)
+			if(ball.x+BALL_RADIUS>=stage.canvas.width)   // ball hit right wall of screen
 			{
-				ball.x = stage.canvas.width-BALL_RADIUS;
+				ball.x = stage.canvas.width - BALL_RADIUS;
 				ball.right = false;
 			}
 
@@ -278,9 +284,13 @@
 				ball.up = false;
 			}
 
-			if(ball.y+BALL_RADIUS>=stage.canvas.height)
+			if(ball.y+BALL_RADIUS>=stage.canvas.height)  // ball hit bottom wall of screen
 			{
-				loseLife();
+				// SI: Jul 14 - ToDo - No Lose life -> display challenges and solutions - Insert match and Vote for playing again with diff config. 
+                // ToDo - Filter Challenges and issues by continent and domain
+                // loseLife();
+                ball.y = stage.canvas.height - BALL_RADIUS;
+                ball.up = true;
 			}
 
 			ball.lastX = ball.x;
@@ -367,7 +377,7 @@
 			for(var i = 0;i<problem_cols;i++)
 				for(var j = 0;j<problem_rows;j++)
 				{
-					createBrick(i*(BRICKS_WIDTH+10)+40,j*(BRICKS_HEIGHT+5)+20);
+					createBrick(i*(BRICKS_WIDTH+BETWEEN_COLS)+PADDING_LEFT,j*(BRICKS_HEIGHT+BETWEEN_ROWS)+PADDING_TOP);
 				}
 		}		
         
@@ -376,7 +386,8 @@
 			for(var i = 0;i<service_cols;i++)
 				for(var j = 0;j<service_rows;j++)
 				{
-					createService(i*(BRICKS_WIDTH+10)+40,j*(BRICKS_HEIGHT+5)+ serviceLine);
+					createService(i*(BRICKS_WIDTH+BETWEEN_COLS)+PADDING_LEFT,j*(BRICKS_HEIGHT+BETWEEN_ROWS) + serviceLine); 
+                    // ToDo - Calculate ServiceLine and add also a PADDING_BOTTOM
 				}
 		}
 
