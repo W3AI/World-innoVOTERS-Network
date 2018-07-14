@@ -33,6 +33,12 @@
         
         // SI: Jul 13, 2018
         
+        var backgroundText = "World innoVOTERS, Network!";
+        var backgroundTextColor = "#999";
+        var backgroundTextStyle = "70px  Arial";
+        var bgTextX = 25;
+        var bgTextY = 360;
+        
         var ballColor = "#ff7700";
         var problem_rows = 5;
         var problem_cols = 14;
@@ -58,6 +64,7 @@
 
 			stage = new createjs.Stage("testCanvas");
 			createjs.Touch.enable(stage);
+            createBackground();
 			createPaddle();
 			createBall();
 			createBrickGrid(); // Create Problems grid
@@ -85,7 +92,13 @@
    			window.onkeydown = keyDownHandler;
 		}
         
-        
+        function createBackground() {
+            var text = new createjs.Text(backgroundText, backgroundTextStyle, backgroundTextColor);
+            text.x = bgTextX;
+            text.y = bgTextY;
+            text.textBaseline = "alphabetic";
+            stage.addChild(text);
+        }
 
 		function startLevel()
 		{
