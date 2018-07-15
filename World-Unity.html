@@ -1,8 +1,8 @@
 <html>
 <head>
 <style>
-body {background-color: ghostwhite;}
-div.absolute {position: absolute; top: 750px; right: 300px; width: 200px; height: 100px; border: 3px solid #fff;}
+body {background-color: whitesmoke;}
+div.absolute {position: absolute; top: 492px; right: 150px; width: 200px; height: 100px;}
 </style>
 
 	<title>World Unity</title>
@@ -10,7 +10,7 @@ div.absolute {position: absolute; top: 750px; right: 300px; width: 200px; height
 	
 </head>
 <body onload="init();">
-	<canvas id="testCanvas" width="1000" height="500" style="border:1px solid #d3d3d3;></canvas>
+	<canvas id="testCanvas" width="640" height="500" style="border:1px solid #d3d3d3;"></canvas>
 	<div class="absolute">Initial Text 1 if Any</div>
 	<script>
         
@@ -26,8 +26,8 @@ div.absolute {position: absolute; top: 750px; right: 300px; width: 200px; height
 		const PADDING_TOP = 20;
         const PADDING_BOTTOM = 20;
         const PADDING_LEFT = 40;
-        const BETWEEN_COLS = 10;
-        const BETWEEN_ROWS = 5;
+        const BETWEEN_COLS = 2;
+        const BETWEEN_ROWS = 2;
         
         const PADDLE_WIDTH = 100;
 		const PADDLE_HEIGHT = 20;
@@ -57,19 +57,19 @@ div.absolute {position: absolute; top: 750px; right: 300px; width: 200px; height
         // or          Match Top Challenges to Solutions
         var backgroundText = "World innoVOTERS, Network!";
         var backgroundTextColor = "#ccc";
-        var backgroundTextStyle = "70px  Arial";
+        var backgroundTextStyle = "30px  Arial";
         var bgTextX = 25;
         var bgTextY = 360;
         
         var ballColor = "#fff"; // #ff7700
         var problem_rows = 5;
-        var problem_cols = 14;
+        var problem_cols = 10;
         
         var services = [];
         var serviceColor = "Green"; // ToDo - make it an array to hold diff colors / service type
         var serviceLine = 550; // y position for the services
         var service_rows = 5;
-        var service_cols = 14; 
+        var service_cols = 10; 
         
         
 		function init()
