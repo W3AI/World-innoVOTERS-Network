@@ -81,6 +81,10 @@ moved here the comments for ball hitting bottom of canvas / screen - which for t
                 // ToDo - Filter Challenges and issues by continent and domain
                 // loseLife();
 
+!!! - Found issue with Chrome bottom of scree is not the 500 set as height for canvas but the height of the browser window on load
+- So, I guess, the logic has to be set with some constants - also to read from somewhere the dimensions of browser screen...
+ 
+- Maybe even localStorege for CreateJS might not work properly to hold locally the high score
 
 
 
