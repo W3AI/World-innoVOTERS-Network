@@ -20,8 +20,8 @@
 		const PADDING_TOP = 20;
         const PADDING_BOTTOM = 20;
         const PADDING_LEFT = 40;
-        const BETWEEN_COLS = 4  ;
-        const BETWEEN_ROWS = 4;
+        const BETWEEN_COLS = 10;
+        const BETWEEN_ROWS = 5;
         
         const PADDLE_WIDTH = 100;
 		const PADDLE_HEIGHT = 20;
@@ -61,7 +61,7 @@
         
         var services = [];
         var serviceColor = "Green"; // ToDo - make it an array to hold diff colors / service type
-        var serviceLine = 500; // y position for the services
+        var serviceLine = 550; // y position for the services
         var service_rows = 5;
         var service_cols = 14; 
         
@@ -281,13 +281,13 @@
 				ball.right = false;
 			}
 
-			if(ball.x-BALL_RADIUS<=0)
+			if(ball.x-BALL_RADIUS<=0)                    // ball hit left wall of screen
 			{
 				ball.x = BALL_RADIUS;
 				ball.right = true;
 			}
 
-			if(ball.y-BALL_RADIUS<=0)
+			if(ball.y-BALL_RADIUS<=0)                    // ball hit top wall of screen
 			{
 				ball.y = BALL_RADIUS;
 				ball.up = false;
@@ -295,9 +295,6 @@
 
 			if(ball.y+BALL_RADIUS>=stage.canvas.height)  // ball hit bottom wall of screen
 			{
-				// SI: Jul 14 - ToDo - No Lose life -> display challenges and solutions - Insert match and Vote for playing again with diff config. 
-                // ToDo - Filter Challenges and issues by continent and domain
-                // loseLife();
                 ball.y = stage.canvas.height - BALL_RADIUS;
                 ball.up = true;
 			}

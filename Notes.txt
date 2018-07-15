@@ -71,6 +71,15 @@ TODO - To implement later multiple balls - equivalent to multiple processors / c
 
 TODO - Add Cols and rows for Operations
 
+Jul 14, 2018
+=======
+
+moved here the comments for ball hitting bottom of canvas / screen - which for the time being doesn't work properly
+- as if there are several hundred pixels more available beyond the height of testCanvas of set to 500
+- lines 298, 299, 300:
+				// SI: Jul 14 - ToDo - No Lose life -> display challenges and solutions - Insert match and Vote for playing again with diff config. 
+                // ToDo - Filter Challenges and issues by continent and domain
+                // loseLife();
 
 
 
